@@ -8,29 +8,60 @@ const perguntas = [
     {
         enunciado: "Qual a cor do sol?",
         alternativas: [
-            "Branco",
-            "Amarelo"
+            {
+                texto:  "Branco",
+                afirmacao: "afirmacao"
+            },
+            {
+                texto: "Amarelo",
+                afirmacao: "afirmacao"
+            }
+            
+            
         ]
     },
     {
         enunciado: "Porque o Kauan falta aula?",
         alternativas: [
-            "Por motivos sérios(mentira)",
-            "Por preguiça"
+            {
+                texto: "Por motivos sérios(mentira)",
+                afirmacao: "afirmacao"
+            },
+            {
+                texto: "Por preguiça",
+                afirmacao: "afirmacao"
+            }
+            
+            
         ]
     },
       {
         enunciado: "O Fernando fica jogando até três horas da manhã?",
         alternativas: [
-            "Sim",
-            "Concerteza"
+            {
+                texto: "Sim",
+                afirmacao: "afirmacao"
+            },
+            {
+                texto: "claro",
+                afirmacao: "afirmacao"
+            }
+            
         ]
     },
      {
         enunciado: "O Gabriel é o melhor alunos de todos?",
         alternativas: [
-            "Sim",
-            "Sim"
+            {
+                texto: "Sim",
+                afirmacao: "afirmacao"
+            },
+            {
+                texto: "Sim",
+                afirmacao: "afirmacao"
+            }
+            
+            
         ]
     },
 ];
@@ -41,7 +72,19 @@ let perguntaAtual;
 function mostraPergunta() {
     perguntaAtual = perguntas[atual];
     caixaPerguntas.textContent = perguntaAtual.enunciado;
+    mostraAlternativas();
+}
+
+function mostraAlternativas(){
+    for(const alternativa of perguntaAtual.alternativas){
+        const botaoAlternativa = document.createElement("button");
+        botaoAlternativa.textContent = alternativa.texto;
+        botaoAlternativa.addEventListener("click", function() {
+            atual++;
+            mostraPergunta();
+        })
+        caixaAlternativas.appendChild(botaoAlternativa);
+    }
 }
 
 mostraPergunta();
-
